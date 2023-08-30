@@ -7,3 +7,7 @@ const io = new Server(httpServer, {
     origin: "https://ocarinaoftime.github.io/"
   }
 });
+io.on("connection", () => {
+    console.log("connected!!!")
+})
+io.listen(3000)
