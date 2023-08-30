@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "https://ocarinaoftime.github.io/"
+    origin: "*"
   }
 });
 io.on("connection", () => {
