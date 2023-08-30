@@ -3,7 +3,7 @@ import "./src/chart.js";
 const gh = new GuitarHero()
 */
 
-const selectedFile = document.getElementById("input").files[0];
+const selectedFile = document.getElementById("input").files;
 function handleFiles() {
     console.log(selectedFile)
 }

@@ -13,6 +13,12 @@
                 console.log(socket.connected)
             })
         </script>
-        <script src="main.js" type="module"></script>
+        <script type="module">
+            const fileSelector = document.getElementById('file-selector');
+            fileSelector.addEventListener('change', (event) => {
+                const fileList = event.target.files;
+                console.log(fileList);
+            });
+        </script>
     </body>
 </html>
