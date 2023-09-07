@@ -16,8 +16,11 @@
         <script type="module">
             const fileSelector = document.getElementById('input');
             fileSelector.addEventListener('change', (event) => {
-                const fileList = event.target.files;
-                console.log(fileList);
+                var reader = new FileReader();
+                reader.onload = function (progressEvent) {
+                    console.log(this.result);
+                }
+                reader.readAsText(this.files[0])
             });
         </script>
     </body>
