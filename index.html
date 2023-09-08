@@ -15,7 +15,7 @@
         </script>
         <script type="module">
             const fileSelector = document.getElementById('input');
-            fileSelector.addEventListener('change', (event) => {
+            fileSelector.addEventListener('change', () => {
                 var reader = new FileReader();
                 reader.onload = function (progressEvent) {
                     console.log(this.result);
