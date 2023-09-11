@@ -6,6 +6,7 @@
     <body>
         <div>Press Enter to choose a .chart file</div>
         <input type="file" id="input" multiple />
+        <output id="files"></output>
         <script type="module">
             import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
             const socket = io("http://127.0.0.1:3000", {})
@@ -15,15 +16,22 @@
         </script>
         <script type="module">
             const fileSelector = document.getElementById('input');
-            fileSelector.addEventListener('change', () => {
-                var reader = new FileReader();
-                reader.onload = function (event) {
-                    var text = event.target.result;
-                    var lines = text.split(/[\r\n]+/g);
-                    for(var i = 0; i < lines.length; i++) { 
-                        /* do something with lines[i] */ 
-                        console.log(lines[i]);
+            fileSelector.addEventListener('change', (evt) => {
+                var files = evt.target.files;
+
+                for (var i = 0, f; f = files[i]; i++) {
+                    var reader = new FileReader()
+
+                    reader.onload = function(e) {
+                        var text = e.target.result
+
+                        var lines = text.split(/[\r\n]+/g)
+
+                        for(var t = 0; t < lines.length; t++) {
+                            console.log(lines)
+                        }
                     }
+                    reader.readAsText(f, "UTF-8")
                 }
             });
         </script>
