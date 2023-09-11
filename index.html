@@ -17,10 +17,13 @@
             const fileSelector = document.getElementById('input');
             fileSelector.addEventListener('change', () => {
                 var reader = new FileReader();
-                reader.onload = function (progressEvent) {
-                    console.log(this.result);
+                reader.onload = function (event) {
+                    var text = event.target.result;
+                    var lines = text.split(/[\r\n]+/g);
+                    lines.forEach(function(line) { 
+                        console.log(lines[line])    
+                    });
                 }
-                reader.readAsText(this.files[0])
             });
         </script>
     </body>
