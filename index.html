@@ -20,9 +20,10 @@
                 reader.onload = function (event) {
                     var text = event.target.result;
                     var lines = text.split(/[\r\n]+/g);
-                    lines.forEach(function(line) { 
-                        console.log(lines[line])    
-                    });
+                    for(var i = 0; i < lines.length; i++) { 
+                        /* do something with lines[i] */ 
+                        console.log(lines[i]);
+                    }
                 }
             });
         </script>
