@@ -1,6 +1,6 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
-
+import { writeFile } from "fs";
 var chart;
 
 const httpServer = createServer();
@@ -11,8 +11,12 @@ const io = new Server(httpServer, {
 });
 io.on("connection", (socket) => {
     console.log("connected!!!")
-    socket.on("chart send", (arg) => {
-      console.log(arg)
-    }) 
-})
+    socket.on("upload", (file, callback) => {
+      console.log(file)
+
+      writeFile("./tmp/upload", file, (err) => {
+        callback({ message: err ? "failure" : "success" });
+      });
+    });
+});
 io.listen(3000)

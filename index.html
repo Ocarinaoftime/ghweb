@@ -14,6 +14,7 @@
                 console.log(socket.connected)
             })
             function upload(files) {
+                console.log("uploading...")
                 socket.emit("upload", files[0], (status) => {
                     console.log(status);
                 });
