@@ -5,11 +5,7 @@
     </head>
     <body>
         <div>Press Enter to choose a .chart file</div>
-        <input type="file" id="input" multiple />
-        <output id="files"></output>
-        <script type="module">
-            
-        </script>
+        <input type="file" onchange="upload(this.files)"/>
         <script type="module">
             import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
             const socket = io("http://127.0.0.1:3000", {})
@@ -17,26 +13,11 @@
                 console.log(socket.connected)
             })
             //================================================
-            const fileSelector = document.getElementById('input');
-            fileSelector.addEventListener('change', (evt) => {
-                var files = evt.target.files;
-
-                for (var i = 0, f; f = files[i]; i++) {
-                    var reader = new FileReader()
-
-                    reader.onload = function(e) {
-                        var text = e.target.result
-
-                        var lines = text.split(/[\r\n]+/g)
-
-                        for(var t = 0; t < lines.length; t++) {
-                            console.log(lines)
-                            socket.emit("chart send", lines)
-                        }
-                    }
-                    reader.readAsText(f, "UTF-8")
-                }
-            });
+            function upload(files) {
+                socket.emit("upload", files[0], (status) => {
+                    console.log(status);
+                });
+            }
         </script>
     </body>
 </html>

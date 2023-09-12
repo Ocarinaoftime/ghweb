@@ -12,8 +12,7 @@ const io = new Server(httpServer, {
 io.on("connection", (socket) => {
     console.log("connected!!!")
     socket.on("chart send", (arg) => {
-      arg = chart;
-      console.log(chart)
+      console.log(arg)
     }) 
 })
 io.listen(3000)
