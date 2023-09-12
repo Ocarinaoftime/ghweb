@@ -7,7 +7,7 @@
         <div>Press Enter to choose a .chart file</div>
         <input type="file" onchange="upload(this.files)"/>
 
-        <script src="socket.io.esm.min.js"></script>
+        <script src="socket.io.min.js"></script>
         <script type="module">
             const socket = io("http://127.0.0.1:3000", {})
             socket.on("connect", () => {
