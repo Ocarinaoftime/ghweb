@@ -2,22 +2,25 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css"/>
-    </head>
-    <body>
-        <div>Press Enter to choose a .chart file</div>
-        <input type="file" onchange="upload(this.files)"/>
-        <script type="module">
+        <script>
             import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
             const socket = io("http://127.0.0.1:3000", {})
             socket.on("connect", () => {
                 console.log(socket.connected)
             })
-            //================================================
             function upload(files) {
                 socket.emit("upload", files[0], (status) => {
                     console.log(status);
                 });
             }
+        </script>
+    </head>
+    <body>
+        <div>Press Enter to choose a .chart file</div>
+        <input type="file" onchange="upload(this.files)"/>
+        <script type="module">
+            //================================================
+            
         </script>
     </body>
 </html>
